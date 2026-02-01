@@ -1,16 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="https://raw.githubusercontent.com/sojijr/valentine-website/main/public/images/favicon.png">
-    <link rel="icon" href="public/images/favicon.png" type="image/x-icon" />  
-    <title>Happy Valentine's Day</title>
-    <link rel="stylesheet" href="public/style.css">
-  </head>
-  <body>
-    <canvas id="starfield"></canvas>
-    <button id="valentinesButton">Click Me! ❤</button>
-    <script src="script.js"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Catherine, Please Wait... ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    overflow: hidden;
+}
+
+/* Loading Screen */
+#loadingScreen {
+    text-align: center;
+    color: white;
+}
+
+.loader {
+    margin: 20px auto;
+    width: 80%;
+    height: 20px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: white;
+    animation: load 4s forwards;
+}
+
+@keyframes load {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* Proposal Card */
+.card {
+    display: none;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    color: #ff3e6c;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+#yes {
+    background: #ff3e6c;
+    color: white;
+}
+
+#no {
+    background: #ddd;
+    position: absolute;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ff3e6c;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Loading Screen -->
+<div id="loadingScreen">
+    <h2>Scanning Catherine's heart 💓</h2>
+    <p>Checking compatibility with World's Best Boyfriend...</p>
+    <div class="loader">
+        <div class="progress"></div>
+    </div>
+    <p>Please wait... This may take 4 seconds of emotional processing ⏳</p>
+</div>
+
+<!-- Main Proposal -->
+<div class="card" id="proposalCard">
+    <h1>Catherine 💖</h1>
+    <p>⚠️ Government-approved relationship question detected.</p>
+    <h2>Will you be my Valentine? 😌</h2>
+
+    <button id="yes">YES (I have excellent taste) 💅</button>
+    <button id="no">NO (button has anxiety) 🤡</button>
+
+    <div id="message"></div>
+</div>
+
+<script>
+setTimeout(() => {
+    document.getElementById("loadingScreen").style.display = "none";
+    document.getElementById("proposalCard").style.display = "block";
+}, 4000);
+
+// Buttons
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const msg = document.getElementById("message");
+
+// Runaway NO button
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+// YES response
+yesBtn.addEventListener("click", () => {
+    msg.innerHTML = "COMPATIBILITY: 100% 💖 Catherine you just unlocked Premium Boyfriend Mode 🎉";
+    document.body.style.background = "linear-gradient(135deg, #ff3e6c, #ff8fa3)";
+});
+</script>
+
+</body>
 </html>
